@@ -4,7 +4,7 @@ workspace "EngineVayne"
 
 	configurations{
 		"Debug",
-		"Relase",
+		"Release",
 		"Dist"
 	}
 
@@ -19,8 +19,8 @@ project "EngineVayne"
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	files{
-		"/%{prj.name}/src/**.h",
-		"/%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs{
@@ -38,7 +38,7 @@ project "EngineVayne"
 		}
 
 		postbuildcommands{
-			("{COPY} %{cfg.buildtarget.relpath} .. /bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
 		}
 
 		filter "configurations:Debug"
@@ -62,8 +62,8 @@ project "Sandbox"
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	files{
-		"/%{prj.name}/src/**.h",
-		"/%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs{
@@ -88,9 +88,9 @@ project "Sandbox"
 			symbols "On"
 
 		filter "configurations:Release"
-        defines "BOI_RELEASE"
-        optimize "On"
+			defines "BOI_RELEASE"
+			optimize "On"
 
 		filter "configurations:Dist"
-        defines "BOI_DIST"
-        optimize "On"
+			defines "BOI_DIST"
+			optimize "On"
